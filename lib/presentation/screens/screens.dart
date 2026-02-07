@@ -1,3 +1,4 @@
+export 'package:widgets_app/presentation/screens/theme_change_screen/theme_changer_screen.dart';
 
 export 'package:flutter/material.dart';
 export 'package:widgets_app/presentation/screens/animated/animated_screen.dart';
@@ -10,5 +11,4 @@ export 'package:widgets_app/presentation/screens/snackbar_screen/snackbar_screen
 export 'package:widgets_app/presentation/screens/buttons/buttons_screen.dart';
 export 'package:widgets_app/presentation/screens/cards/cards_screen.dart';
 export 'package:widgets_app/presentation/screens/home/home_screen.dart';
-
-
+export 'package:widgets_app/presentation/screens/counter/counter_screen.dart';

@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/menu/menu_item.dart';
 import 'package:widgets_app/presentation/screens/cards/cards_screen.dart';
+import 'package:widgets_app/presentation/widgets/side_menu.dart';
 
 class HomeScreen extends StatelessWidget {
-
   static const String name = 'home_screen';
 
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldkey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter + Material 3')
-      ),
+      key: scaffoldkey,
+      appBar: AppBar(title: const Text('Flutter + Material 3')),
       body: _HomeView(),
+      drawer: SideMenu(scaffoldKey: scaffoldkey),
     );
   }
 }
@@ -27,9 +29,8 @@ class _HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: appMenuItems.length,
-      itemBuilder: (context, index){
+      itemBuilder: (context, index) {
         final menuItem = appMenuItems[index];
-
 
         return _CustomListTile(menuItem: menuItem);
       },
@@ -38,21 +39,18 @@ class _HomeView extends StatelessWidget {
 }
 
 class _CustomListTile extends StatelessWidget {
-  const _CustomListTile({
-    required this.menuItem,
-  });
+  const _CustomListTile({required this.menuItem});
 
   final MenuItem menuItem;
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
 
     return ListTile(
       leading: Icon(menuItem.icon, color: colors.primary),
       trailing: Icon(Icons.arrow_forward_ios_rounded, color: colors.primary),
-      title: Text( menuItem.title),
+      title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
       onTap: () {
         // Navegar a otra pantalla/// una forma de rutas
@@ -64,7 +62,7 @@ class _CustomListTile extends StatelessWidget {
         //Navigator.pushNamed(context, menuItem.link);
 
         ///llama link
-        context.push(menuItem.link);//rutas
+        context.push(menuItem.link); //rutas
         //context.pushNamed(CardsScreen.name);//llamar por nombre
       },
     );

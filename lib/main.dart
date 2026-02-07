@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:widgets_app/config/router/app_router.dart';
 import 'package:widgets_app/config/theme/app_theme.dart';
 
-
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -12,9 +12,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp.router(
+    return MaterialApp.router(
       title: 'Flutter Widgets',
-      routerConfig: appRouter,///la emjor configuracion de rutas
+      routerConfig: appRouter,
+
+      ///la emjor configuracion de rutas
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selectColor: 1).getTheme(),
       //UNA OPCIOON DE RUTAS
