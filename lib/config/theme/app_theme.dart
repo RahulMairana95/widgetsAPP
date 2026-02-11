@@ -29,4 +29,9 @@ class AppTheme {
     brightness: isDarkMode ? Brightness.dark : Brightness.light,
     colorSchemeSeed: colorList[selectColor],
   );
+
+  AppTheme copyWith({int? selectColor, bool? isDarkMode}) => AppTheme(
+    selectColor: selectColor ?? this.selectColor,
+    isDarkMode: isDarkMode ?? this.isDarkMode,
+  );
 }
