@@ -15,17 +15,18 @@ const colorList = <Color>[
 
 class AppTheme {
   final int selectColor;
+  final bool isDarkMode;
 
-  AppTheme({
-    this.selectColor = 0
-  }): assert( selectColor >= 0, 'Seleccionar colores mayor o igual a 0'),
-      assert( selectColor < colorList.length, 'Seleccionar color menor o igual a ${colorList.length}');
-  
-
-
+  AppTheme({this.selectColor = 0, this.isDarkMode = false})
+    : assert(selectColor >= 0, 'Seleccionar colores mayor o igual a 0'),
+      assert(
+        selectColor < colorList.length,
+        'Seleccionar color menor o igual a ${colorList.length}',
+      );
 
   ThemeData getTheme() => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: colorList[ selectColor ],
+    brightness: isDarkMode ? Brightness.dark : Brightness.light,
+    colorSchemeSeed: colorList[selectColor],
   );
 }
